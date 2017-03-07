@@ -23,6 +23,10 @@ class ChartPropertyHelper {
   }
 
   setProperty(key) {
+    if (key.match(/^on/)) {
+      return this.setOn(key);
+    }
+
     if (this.props.hasOwnProperty(key)) {
       this.chart[key](this.props[key]);
     }
@@ -40,6 +44,15 @@ class ChartPropertyHelper {
           this.chart[key](val);
         }
       }
+    }
+    return this;
+  }
+
+  setOn(key) {
+    if (this.props.hasOwnProperty(key)) {
+      var event = key.replace(/^on/, '');
+      event = event.charAt(0).toLowerCase() + event.slice(1);
+      this.chart.on(event, this.props[key]);
     }
     return this;
   }
