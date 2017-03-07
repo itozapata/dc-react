@@ -1,11 +1,12 @@
 {
   "name": "dc-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React Components for DC",
   "main": "lib/index.js",
   "scripts": {
     "babel": "babel ./components --out-dir ./lib",
     "build": "NODE_ENV=production npm run babel",
+    "build-win": "SET NODE_ENV=production & npm run babel",
     "prepublish": "npm run build",
     "lint": "eslint ./components/**",
     "test": "echo \"Error: no test specified\" && exit 1"

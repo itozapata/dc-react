@@ -12,7 +12,8 @@ class BarChart extends Component {
     alwaysUseRounding: PropTypes.bool,
     x: PropTypes.func,
     renderHorizontalGridLines: PropTypes.bool,
-    filterPrinter: PropTypes.func
+    filterPrinter: PropTypes.func,
+    ordinalColors: PropTypes.array
   };
 
   loadChart = (container) => {
@@ -20,7 +21,7 @@ class BarChart extends Component {
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('elasticY', 'centerBar', 'gap', 'round',
                          'alwaysUseRounding', 'x', 'renderHorizontalGridLines',
-                         'filterPrinter');
+                         'filterPrinter', 'ordinalColors');
 
     chart.render();
   };
