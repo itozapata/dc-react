@@ -27,6 +27,10 @@ class ChartPropertyHelper {
       return this.setOn(key);
     }
 
+    if (key.match(/AxisLabel$/)) {
+      return this.setObjectProperty(key);
+    }
+
     if (this.props.hasOwnProperty(key)) {
       this.chart[key](this.props[key]);
     }
@@ -53,6 +57,15 @@ class ChartPropertyHelper {
       var event = key.replace(/^on/, '');
       event = event.charAt(0).toLowerCase() + event.slice(1);
       this.chart.on(event, this.props[key]);
+    }
+    return this;
+  }
+
+  setObjectProperty(key) {
+    if (this.props.hasOwnProperty(key)) {
+      var val = this.props[key];
+      var vals = Object.keys(val).map(key => val[key]);
+      this.chart[key](...vals);
     }
     return this;
   }

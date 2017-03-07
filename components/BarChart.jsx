@@ -16,7 +16,9 @@ class BarChart extends Component {
     ordinalColors: PropTypes.array,
     xAxis: PropTypes.func,
     onRenderlet: PropTypes.func,
-    brushOn: PropTypes.bool
+    brushOn: PropTypes.bool,
+    xAxisLabel: PropTypes.object,
+    yAxisLabel: PropTypes.object
   };
 
   loadChart = (container) => {
@@ -25,7 +27,7 @@ class BarChart extends Component {
     helper.setProperties('elasticY', 'centerBar', 'gap', 'round',
                          'alwaysUseRounding', 'x', 'renderHorizontalGridLines',
                          'filterPrinter', 'ordinalColors', 'xAxis',
-                         'onRenderlet', 'brushOn');
+                         'onRenderlet', 'brushOn', 'xAxisLabel', 'yAxisLabel');
 
     chart.render();
   };
