@@ -27,6 +27,10 @@ class ChartPropertyHelper {
       return this.setOn(key);
     }
 
+    if (key.match(/Axis$/) && typeof this.props[key] === 'function') {
+      return this.setAxis(key);
+    }
+
     if (key.match(/AxisLabel$/)) {
       return this.setObjectProperty(key);
     }
@@ -57,6 +61,18 @@ class ChartPropertyHelper {
       var event = key.replace(/^on/, '');
       event = event.charAt(0).toLowerCase() + event.slice(1);
       this.chart.on(event, this.props[key]);
+    }
+    return this;
+  }
+
+  setAxis(key) {
+    if (this.props.hasOwnProperty(key)) {
+      var func = this.props[key];
+      if (key.charAt(0) === 'x') {
+        this.chart.xAxis = func(this.chart.xAxis);
+      } else if (key.charAt(0) === 'y') {
+        this.chart.yAxis = func(this.chart.yAxis);
+      }
     }
     return this;
   }
