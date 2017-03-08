@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import dc from 'dc';
 import { Base } from './Base';
-
+import { XAxisLabel, YAxisLabel } from './index';
 
 class BarChart extends Component {
   static propTypes = {
@@ -18,8 +18,16 @@ class BarChart extends Component {
     yAxis: PropTypes.func,
     onRenderlet: PropTypes.func,
     brushOn: PropTypes.bool,
-    xAxisLabel: PropTypes.object,
-    yAxisLabel: PropTypes.object
+    children: function (props, propName, componentName) {
+      const prop = props[propName];
+      let error = null;
+      React.Children.forEach(prop, function (child) {
+        if (child.type !== XAxisLabel && child.type !== YAxisLabel) {
+          error = new Error('`' + componentName + '` children should be of type `XAxisLabel` or `YAxisLabel`.');
+        }
+      });
+      return error;
+    }
   };
 
   loadChart = (container) => {
@@ -28,7 +36,15 @@ class BarChart extends Component {
     helper.setProperties('elasticY', 'centerBar', 'gap', 'round',
                          'alwaysUseRounding', 'x', 'renderHorizontalGridLines',
                          'filterPrinter', 'ordinalColors', 'xAxis', 'yAxis',
-                         'onRenderlet', 'brushOn', 'xAxisLabel', 'yAxisLabel');
+                         'onRenderlet', 'brushOn');
+
+    React.Children.forEach(this.props.children, function (child) {
+      if (child.type === XAxisLabel) {
+        helper.setAxisLabel('x', child.props.label, child.props.padding);
+      } else if (child.type === YAxisLabel) {
+        helper.setAxisLabel('y', child.props.label, child.props.padding);
+      }
+    });
 
     chart.render();
   };

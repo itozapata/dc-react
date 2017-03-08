@@ -77,11 +77,11 @@ class ChartPropertyHelper {
     return this;
   }
 
-  setObjectProperty(key) {
-    if (this.props.hasOwnProperty(key)) {
-      var val = this.props[key];
-      var vals = Object.keys(val).map(key => val[key]);
-      this.chart[key](...vals);
+  setAxisLabel(axis, label, padding) {
+    if (axis === 'x') {
+      this.chart.xAxisLabel(label, padding);
+    } else if (axis === 'y') {
+      this.chart.yAxisLabel(label, padding);
     }
     return this;
   }

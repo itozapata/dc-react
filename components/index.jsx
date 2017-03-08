@@ -7,6 +7,7 @@ import _PieChart from './PieChart';
 import _RowChart from './RowChart';
 import _BarChart from './BarChart';
 import _LineChart from './LineChart';
+import { XAxisLabel as _XAxisLabel, YAxisLabel as _YAxisLabel } from './AxisLabel';
 
 export const ChartContainer = _ChartContainer;
 export const Base = _Base;
@@ -17,3 +18,5 @@ export const PieChart = _PieChart;
 export const RowChart = _RowChart;
 export const BarChart = _BarChart;
 export const LineChart = _LineChart;
+export const XAxisLabel = _XAxisLabel;
+export const YAxisLabel = _YAxisLabel;
