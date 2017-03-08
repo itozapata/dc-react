@@ -65,13 +65,20 @@ class ChartPropertyHelper {
     return this;
   }
 
-  setAxis(key) {
-    if (this.props.hasOwnProperty(key)) {
-      var func = this.props[key];
-      if (key.charAt(0) === 'x') {
-        this.chart.xAxis = func(this.chart.xAxis);
-      } else if (key.charAt(0) === 'y') {
-        this.chart.yAxis = func(this.chart.yAxis);
+  setAxis(axis, ticks, tickFormat) {
+    if (axis === 'x') {
+      if (ticks) {
+        this.chart.xAxis().ticks(ticks);
+      }
+      if (tickFormat) {
+        this.chart.xAxis().tickFormat(tickFormat);
+      }
+    } else if (axis === 'y') {
+      if (ticks) {
+        this.chart.yAxis().ticks(ticks);
+      }
+      if (tickFormat) {
+        this.chart.yAxis().tickFormat(tickFormat);
       }
     }
     return this;

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import dc from 'dc';
 import { Base } from './Base';
-import { XAxisLabel, YAxisLabel } from './index';
+import { XAxisLabel, YAxisLabel, XAxis, YAxis } from './index';
 
 class BarChart extends Component {
   static propTypes = {
@@ -14,16 +14,14 @@ class BarChart extends Component {
     renderHorizontalGridLines: PropTypes.bool,
     filterPrinter: PropTypes.func,
     ordinalColors: PropTypes.array,
-    xAxis: PropTypes.func,
-    yAxis: PropTypes.func,
     onRenderlet: PropTypes.func,
     brushOn: PropTypes.bool,
     children: function (props, propName, componentName) {
       const prop = props[propName];
       let error = null;
       React.Children.forEach(prop, function (child) {
-        if (child.type !== XAxisLabel && child.type !== YAxisLabel) {
-          error = new Error('`' + componentName + '` children should be of type `XAxisLabel` or `YAxisLabel`.');
+        if (child.type !== XAxisLabel && child.type !== YAxisLabel && child.type !== XAxis && child.type !== YAxis) {
+          error = new Error('`' + componentName + '` children should be of type `XAxis`, `YAxis`, `XAxisLabel` or `YAxisLabel`.');
         }
       });
       return error;
@@ -35,14 +33,18 @@ class BarChart extends Component {
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('elasticY', 'centerBar', 'gap', 'round',
                          'alwaysUseRounding', 'x', 'renderHorizontalGridLines',
-                         'filterPrinter', 'ordinalColors', 'xAxis', 'yAxis',
-                         'onRenderlet', 'brushOn');
+                         'filterPrinter', 'ordinalColors', 'onRenderlet', 
+                         'brushOn');
 
     React.Children.forEach(this.props.children, function (child) {
       if (child.type === XAxisLabel) {
         helper.setAxisLabel('x', child.props.label, child.props.padding);
       } else if (child.type === YAxisLabel) {
         helper.setAxisLabel('y', child.props.label, child.props.padding);
+      } else if (child.type === XAxis) {
+        helper.setAxis('x', child.props.ticks, child.props.tickFormat);
+      } else if (child.type === YAxis) {
+        helper.setAxis('y', child.props.ticks, child.props.tickFormat);
       }
     });
 

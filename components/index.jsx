@@ -8,6 +8,7 @@ import _RowChart from './RowChart';
 import _BarChart from './BarChart';
 import _LineChart from './LineChart';
 import { XAxisLabel as _XAxisLabel, YAxisLabel as _YAxisLabel } from './AxisLabel';
+import { XAxis as _XAxis, YAxis as _YAxis } from './Axis';
 
 export const ChartContainer = _ChartContainer;
 export const Base = _Base;
@@ -20,3 +21,5 @@ export const BarChart = _BarChart;
 export const LineChart = _LineChart;
 export const XAxisLabel = _XAxisLabel;
 export const YAxisLabel = _YAxisLabel;
+export const XAxis = _XAxis;
+export const YAxis = _YAxis;
