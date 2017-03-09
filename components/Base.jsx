@@ -32,12 +32,18 @@ export let Base = DCComponent => class extends Component {
       dcComponent.props.setChart(dcChart);
     }
 
+    this._dcChart = dcChart;
     return helper;
   };
+
+  width = (width) => {
+    this._dcChart.width(width).redraw().render();
+  }
 
   render() {
     return <DCComponent {...this.props}
                         crossfilterContext={this.context.crossfilterContext}
-                        chartHelper={this.dcHelper} />;
+                        chartHelper={this.dcHelper}
+                        redraw={this.redraw} />;
   }
 };
