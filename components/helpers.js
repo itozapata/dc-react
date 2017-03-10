@@ -92,6 +92,11 @@ class ChartPropertyHelper {
     }
     return this;
   }
+
+  setOverlayGeoJson(json, name, keyAccessor) {
+    this.chart.overlayGeoJson(json, name, keyAccessor);
+    return this;
+  }
 }
 
 export {

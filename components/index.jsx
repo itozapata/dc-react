@@ -9,6 +9,8 @@ import _BarChart from './BarChart';
 import _LineChart from './LineChart';
 import { XAxisLabel as _XAxisLabel, YAxisLabel as _YAxisLabel } from './AxisLabel';
 import { XAxis as _XAxis, YAxis as _YAxis } from './Axis';
+import _GeoChoroplethChart from './GeoChoroplethChart';
+import { OverlayGeoJson as _OverlayGeoJson } from './Geo';
 
 export const ChartContainer = _ChartContainer;
 export const Base = _Base;
@@ -23,3 +25,5 @@ export const XAxisLabel = _XAxisLabel;
 export const YAxisLabel = _YAxisLabel;
 export const XAxis = _XAxis;
 export const YAxis = _YAxis;
+export const GeoChoroplethChart = _GeoChoroplethChart;
+export const OverlayGeoJson = _OverlayGeoJson;
