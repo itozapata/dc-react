@@ -123,6 +123,40 @@ class ChartPropertyHelper {
         .attr('d', path);
     };
   }
+
+  setColorLegend(width, height, colors, minValue, maxValue, labelY, legendY, size) {
+    // append legend
+    let svg = this.chart.select('svg')
+    svg.selectAll('.color-legend').remove();
+    let legend = svg.append('g').attr('class', 'color-legend');
+    let maxColor = colors.indexOf(this.chart.getColor(maxValue));
+
+    // fill legend
+    let offset = 5;
+    for (let c = 0; c <= maxColor; c++){
+      let labelX = 0;
+      let value = '';
+      if (c === 0) {
+        value = 'min: 0';
+        labelX = offset;
+      } else if (c === maxColor){
+        maxValue = d3.format(',.d')(maxValue);
+        value = `max: ${maxValue}`;
+        labelX = 50;
+      }
+
+      legend.append('text')
+        .attr('x', labelX)
+        .attr('y', labelY)
+        .text(value);
+      legend.append('rect')
+        .attr('x', offset + c * size)
+        .attr('y', legendY)
+        .attr('width', size)
+        .attr('height', size)
+        .attr('fill', colors[c]);
+    }
+  }
 }
 
 export {

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import dc from 'dc';
 import { Base } from './Base';
-import { Tooltips, Legend, Zoom, OverlayGeoJson } from './index';
+import { OverlayGeoJson, Zoom, ColorLegend } from './index';
 
 class GeoChoroplethChart extends Component {
   static propTypes = {
@@ -14,8 +14,8 @@ class GeoChoroplethChart extends Component {
       const prop = props[propName];
       let error = null;
       React.Children.forEach(prop, function (child) {
-        if (child.type !== OverlayGeoJson && child.type !== Zoom) {
-          error = new Error('`' + componentName + '` children should be of type `OverlayGeoJson` or `Zoom`.');
+        if (child.type !== OverlayGeoJson && child.type !== Zoom && child.type !== ColorLegend) {
+          error = new Error('`' + componentName + '` children should be of type `OverlayGeoJson`, `Zoom` or `ColorLegend`.');
         }
       });
       return error;
@@ -32,12 +32,18 @@ class GeoChoroplethChart extends Component {
       if (child.type === OverlayGeoJson) {
         helper.setOverlayGeoJson(child.props.json, child.props.name, child.props.keyAccessor);
       }
-      if (child.type === Zoom) {
-        helper.setZoom(child.props.width, child.props.height, child.props.scale, child.props.projection);
-      }
     });
 
     chart.render();
+
+    React.Children.forEach(this.props.children, function (child) {
+      if (child.type === Zoom) {
+        helper.setZoom(child.props.width, child.props.height, child.props.scale, child.props.projection);
+      }
+      if (child.type === ColorLegend) {
+        helper.setColorLegend(child.props.width, child.props.height, child.props.colors, child.props.minValue, child.props.maxValue, child.props.labelY, child.props.legendY, child.props.size);
+      }
+    });
   };
 
   render() {
