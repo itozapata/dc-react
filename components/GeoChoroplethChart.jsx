@@ -14,8 +14,8 @@ class GeoChoroplethChart extends Component {
       const prop = props[propName];
       let error = null;
       React.Children.forEach(prop, function (child) {
-        if (child.type !== OverlayGeoJson) {
-          error = new Error('`' + componentName + '` children should be of type `OverlayGeoJson`.');
+        if (child.type !== OverlayGeoJson && child.type !== Zoom) {
+          error = new Error('`' + componentName + '` children should be of type `OverlayGeoJson` or `Zoom`.');
         }
       });
       return error;
@@ -31,6 +31,9 @@ class GeoChoroplethChart extends Component {
     React.Children.forEach(this.props.children, function (child) {
       if (child.type === OverlayGeoJson) {
         helper.setOverlayGeoJson(child.props.json, child.props.name, child.props.keyAccessor);
+      }
+      if (child.type === Zoom) {
+        helper.setZoom(child.props.width, child.props.height, child.props.scale, child.props.projection);
       }
     });
 

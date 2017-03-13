@@ -97,6 +97,32 @@ class ChartPropertyHelper {
     this.chart.overlayGeoJson(json, name, keyAccessor);
     return this;
   }
+
+  setZoom(width, height, scale, projection) {
+    let path = d3.geo.path()
+      .projection(projection);
+
+    let zoom = d3.behavior.zoom()
+      .translate([width / 2, height / 2])
+      .scale(scale)
+      .scaleExtent([scale / 4, 8 * scale])
+      .on('zoom', zoomed);
+
+    let chart = this.chart;
+    chart.select('svg')
+      .call(zoom)
+      .call(zoom.event);
+
+    var zoomed = () => {
+      projection
+        .translate(zoom.translate())
+        .scale(zoom.scale());
+
+      chart.select('svg')
+        .selectAll('g path')
+        .attr('d', path);
+    };
+  }
 }
 
 export {
