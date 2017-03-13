@@ -9,6 +9,8 @@ export class ColorLegend extends Component {
     maxValue: PropTypes.number.isRequired,
     labelY: PropTypes.number.isRequired,
     legendY: PropTypes.number.isRequired,
-    size: PropTypes.number.isRequired
+    size: PropTypes.number.isRequired,
+    labelValueFormat: PropTypes.string,
+    locale: PropTypes.object
   };
 }

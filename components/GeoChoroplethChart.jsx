@@ -41,7 +41,7 @@ class GeoChoroplethChart extends Component {
         helper.setZoom(child.props.width, child.props.height, child.props.scale, child.props.projection);
       }
       if (child.type === ColorLegend) {
-        helper.setColorLegend(child.props.width, child.props.height, child.props.colors, child.props.minValue, child.props.maxValue, child.props.labelY, child.props.legendY, child.props.size);
+        helper.setColorLegend(child.props.width, child.props.height, child.props.colors, child.props.minValue, child.props.maxValue, child.props.labelY, child.props.legendY, child.props.size, child.props.labelValueFormat, child.props.locale);
       }
     });
   };

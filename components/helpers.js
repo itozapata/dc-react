@@ -124,31 +124,33 @@ class ChartPropertyHelper {
     };
   }
 
-  setColorLegend(width, height, colors, minValue, maxValue, labelY, legendY, size) {
+  setColorLegend(width, height, colors, minValue, maxValue, labelY, legendY, size, labelValueFormat, locale) {
     // append legend
     let svg = this.chart.select('svg')
     svg.selectAll('.color-legend').remove();
     let legend = svg.append('g').attr('class', 'color-legend');
     let maxColor = colors.indexOf(this.chart.getColor(maxValue));
+    let format = locale.numberFormat(labelValueFormat ? labelValueFormat : ',.d');
 
     // fill legend
     let offset = 5;
-    for (let c = 0; c <= maxColor; c++){
-      let labelX = 0;
-      let value = '';
+    let maxLabelOffset = offset * 2;
+    for (let c = 0; c <= maxColor; c++) {
       if (c === 0) {
-        value = 'min: 0';
-        labelX = offset;
+        legend.append('text')
+          .attr('x', offset)
+          .attr('y', labelY)
+          .text(`min: ${format(0)}`)
+          .each(function(d) {
+            maxLabelOffset += this.getBBox().width;
+          });
       } else if (c === maxColor){
-        maxValue = d3.format(',.d')(maxValue);
-        value = `max: ${maxValue}`;
-        labelX = 50;
+        legend.append('text')
+          .attr('x', maxLabelOffset)
+          .attr('y', labelY)
+          .text(`max: ${format(maxValue)}`);
       }
 
-      legend.append('text')
-        .attr('x', labelX)
-        .attr('y', labelY)
-        .text(value);
       legend.append('rect')
         .attr('x', offset + c * size)
         .attr('y', legendY)
