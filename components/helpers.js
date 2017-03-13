@@ -102,26 +102,24 @@ class ChartPropertyHelper {
     let path = d3.geo.path()
       .projection(projection);
 
+    let chart = this.chart;
     let zoom = d3.behavior.zoom()
       .translate([width / 2, height / 2])
       .scale(scale)
       .scaleExtent([scale / 4, 8 * scale])
-      .on('zoom', zoomed);
+      .on('zoom', () => {
+        projection
+          .translate(d3.event.translate)
+          .scale(d3.event.scale);
 
-    let chart = this.chart;
+        chart.select('svg')
+          .selectAll('g path')
+          .attr('d', path);
+      });
+
     chart.select('svg')
       .call(zoom)
       .call(zoom.event);
-
-    var zoomed = () => {
-      projection
-        .translate(zoom.translate())
-        .scale(zoom.scale());
-
-      chart.select('svg')
-        .selectAll('g path')
-        .attr('d', path);
-    };
   }
 
   setColorLegend(width, height, colors, minValue, maxValue, labelY, legendY, size, labelValueFormat, locale) {
