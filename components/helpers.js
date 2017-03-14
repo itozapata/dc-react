@@ -112,6 +112,8 @@ class ChartPropertyHelper {
           .translate(d3.event.translate)
           .scale(d3.event.scale);
 
+        // performance issue to resolve...
+        // see http://stackoverflow.com/a/17094912/504477
         chart.select('svg')
           .selectAll('g path')
           .attr('d', path);
