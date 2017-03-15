@@ -13,6 +13,7 @@ import _GeoChoroplethChart from './GeoChoroplethChart';
 import { OverlayGeoJson as _OverlayGeoJson } from './Geo';
 import { Zoom as _Zoom } from './Behaviour';
 import { ColorLegend as _ColorLegend } from './Legend';
+import _NumberDisplay from './NumberDisplay';
 
 export const ChartContainer = _ChartContainer;
 export const Base = _Base;
@@ -31,3 +32,4 @@ export const GeoChoroplethChart = _GeoChoroplethChart;
 export const OverlayGeoJson = _OverlayGeoJson;
 export const Zoom = _Zoom;
 export const ColorLegend = _ColorLegend;
+export const NumberDisplay = _NumberDisplay;
