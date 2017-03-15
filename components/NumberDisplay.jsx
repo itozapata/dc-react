@@ -23,4 +23,4 @@ class NumberDisplay extends Component {
   }
 }
 
-export default Base(DataCount);
+export default Base(NumberDisplay);
