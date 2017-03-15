@@ -128,7 +128,7 @@ class ChartPropertyHelper {
     // append legend
     let svg = this.chart.select('svg')
     svg.selectAll('.color-legend').remove();
-    let legend = svg.append('g').attr('class', 'color-legend');
+    let legend = svg.append('g').classed('color-legend', true);
     let maxColor = colors.indexOf(this.chart.getColor(maxValue));
     let format = locale.numberFormat(labelValueFormat ? labelValueFormat : ',.d');
 
