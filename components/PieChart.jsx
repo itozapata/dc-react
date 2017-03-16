@@ -13,7 +13,9 @@ class PieChart extends Component {
     legend: PropTypes.func,
     externalRadiusPadding: PropTypes.number,
     cx: PropTypes.number,
-    cy: PropTypes.number
+    cy: PropTypes.number,
+    valueAccessor: PropTypes.func,
+    keyAccessor: PropTypes.func
   };
 
   loadChart = (container) => {
@@ -21,7 +23,8 @@ class PieChart extends Component {
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('radius', 'innerRadius', 'ordinalColors', 
                          'onPretransition', 'legend', 'onRenderlet',
-                         'externalRadiusPadding', 'cx', 'cy');
+                         'externalRadiusPadding', 'cx', 'cy',
+                         'valueAccessor', 'keyAccessor');
 
     chart.render();
   };

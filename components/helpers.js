@@ -46,10 +46,12 @@ class ChartPropertyHelper {
       let func = this.props[key];
       if (func) {
         const val = func(this.props.crossfilterContext);
-        if (Array.isArray(val)) {
-          this.chart[key](...val);
-        } else {
-          this.chart[key](val);
+        if (val) {
+          if (Array.isArray(val)) {
+            this.chart[key](...val);
+          } else {
+            this.chart[key](val);
+          }
         }
       }
     }
