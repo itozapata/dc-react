@@ -14,7 +14,8 @@ export let Base = DCComponent => class extends Component {
     mouseZoomable: PropTypes.bool,
     legend: PropTypes.object,
     setChart: PropTypes.func,
-    renderLabel: PropTypes.bool
+    renderLabel: PropTypes.bool,
+    renderTitle: PropTypes.bool
   };
 
   static contextTypes = {
@@ -26,7 +27,7 @@ export let Base = DCComponent => class extends Component {
     if (loadDefault) {
       helper.setProperties('width', 'height', 'title', 'label',
                            'transitionDuration', 'margins', 'mouseZoomable',
-                           'legend', 'renderLabel')
+                           'legend', 'renderLabel', 'renderTitle')
             .setContextProperties('dimension', 'group');
     }
     if (dcComponent.props.setChart) {

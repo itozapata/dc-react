@@ -5,13 +5,16 @@ import { Base } from './Base';
 class NumberDisplay extends Component {
   static PropTypes = {
     valueAccessor: PropTypes.func,
-    formatNumber: PropTypes.func
+    formatNumber: PropTypes.func,
+    onPretransition: PropTypes.func,
+    html: PropTypes.object
   };
 
   loadChart = (container) => {
     const chart = dc.numberDisplay(container);
     const helper = this.props.chartHelper(this, chart);
-    helper.setProperties('valueAccessor', 'formatNumber');
+    helper.setProperties('valueAccessor', 'formatNumber', 'onPretransition',
+                         'html');
 
     chart.render();
   };
