@@ -11,11 +11,14 @@ class BarChart extends Component {
     round: PropTypes.func,
     alwaysUseRounding: PropTypes.bool,
     x: PropTypes.func,
+    y: PropTypes.func,
+    xUnits: PropTypes.func,
     renderHorizontalGridLines: PropTypes.bool,
     filterPrinter: PropTypes.func,
     ordinalColors: PropTypes.array,
     onRenderlet: PropTypes.func,
     brushOn: PropTypes.bool,
+    clipPadding: PropTypes.number,
     children: function (props, propName, componentName) {
       const prop = props[propName];
       let error = null;
@@ -32,9 +35,10 @@ class BarChart extends Component {
     const chart = dc.barChart(container);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('elasticY', 'centerBar', 'gap', 'round',
-                         'alwaysUseRounding', 'x', 'renderHorizontalGridLines',
-                         'filterPrinter', 'ordinalColors', 'onRenderlet', 
-                         'brushOn');
+                         'alwaysUseRounding', 'x', 'y', 'xUnits', 
+                         'renderHorizontalGridLines', 'filterPrinter', 
+                         'ordinalColors', 'onRenderlet', 'brushOn',
+                         'clipPadding');
 
     React.Children.forEach(this.props.children, function (child) {
       if (child.type === XAxisLabel) {

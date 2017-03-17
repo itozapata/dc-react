@@ -15,7 +15,9 @@ class PieChart extends Component {
     cx: PropTypes.number,
     cy: PropTypes.number,
     valueAccessor: PropTypes.func,
-    keyAccessor: PropTypes.func
+    keyAccessor: PropTypes.func,
+    colors: PropTypes.func,
+    colorAccessor: PropTypes.func
   };
 
   loadChart = (container) => {
@@ -24,7 +26,8 @@ class PieChart extends Component {
     helper.setProperties('radius', 'innerRadius', 'ordinalColors', 
                          'onPretransition', 'legend', 'onRenderlet',
                          'externalRadiusPadding', 'cx', 'cy',
-                         'valueAccessor', 'keyAccessor');
+                         'valueAccessor', 'keyAccessor', 'colors',
+                         'colorAccessor');
 
     chart.render();
   };
