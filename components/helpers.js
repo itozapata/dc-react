@@ -106,19 +106,11 @@ class ChartPropertyHelper {
 
     let chart = this.chart;
     let zoom = d3.behavior.zoom()
-      .translate([width / 2, height / 2])
-      .scale(scale)
-      .scaleExtent([scale / 4, 8 * scale])
+      .scaleExtent([1, 8])
       .on('zoom', () => {
-        projection
-          .translate(d3.event.translate)
-          .scale(d3.event.scale);
-
-        // performance issue to resolve...
-        // see http://stackoverflow.com/a/17094912/504477
         chart.select('svg')
-          .selectAll('g path')
-          .attr('d', path);
+          .select('g')
+          .attr('transform', `translate(${d3.event.translate}) scale(${d3.event.scale})`);
       });
 
     chart.select('svg')
