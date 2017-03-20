@@ -132,7 +132,9 @@ class ChartPropertyHelper {
     svg.selectAll('.color-legend').remove();
     let legend = svg.append('g').classed('color-legend', true);
     let maxColor = colors.indexOf(this.chart.getColor(maxValue));
-    let format = locale.numberFormat(labelValueFormat ? labelValueFormat : ',.d');
+    let format = locale && labelValueFormat 
+      ? locale.numberFormat(labelValueFormat ? labelValueFormat : ',.d') 
+      : value => value;
 
     // fill legend
     let offset = 5;
