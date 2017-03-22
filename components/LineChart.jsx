@@ -15,6 +15,11 @@ class LineChart extends Component {
     brushOn: PropTypes.bool,
     valueAccessor: PropTypes.func,
     stack: PropTypes.func,
+    renderVerticalGridLines: PropTypes.bool,
+    colors: PropTypes.array,
+    onRenderlet: PropTypes.func,
+    onPretransition: PropTypes.func,
+    onFiltered: PropTypes.func
   };
 
   loadChart = (container) => {
@@ -22,7 +27,8 @@ class LineChart extends Component {
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('renderArea', 'xAxis', 'x', 'round', 'xUnits',
                          'elasticY', 'renderHorizontalGridLines', 'brushOn',
-                         'valueAccessor')
+                         'valueAccessor', 'renderVerticalGridLines', 'colors',
+                         'onPretransition', 'onRenderlet', 'onFiltered')
           .setContextProperties('stack');
 
     chart.render();
