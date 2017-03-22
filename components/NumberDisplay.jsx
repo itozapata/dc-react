@@ -11,6 +11,10 @@ class NumberDisplay extends Component {
   };
 
   loadChart = (container) => {
+    if (container == null) {
+      return;
+    }
+    
     const chart = dc.numberDisplay(container);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('valueAccessor', 'formatNumber', 'onPretransition',

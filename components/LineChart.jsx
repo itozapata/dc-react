@@ -23,6 +23,10 @@ class LineChart extends Component {
   };
 
   loadChart = (container) => {
+    if (container == null) {
+      return;
+    }
+
     const chart = dc.lineChart(container);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('renderArea', 'xAxis', 'x', 'round', 'xUnits',

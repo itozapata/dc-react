@@ -15,6 +15,10 @@ class BubbleChart extends Component {
   };
 
   loadChart = (container) => {
+    if (container == null) {
+      return;
+    }
+    
     const chart = dc.bubbleChart(container);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('colorAccessor', 'keyAccessor',

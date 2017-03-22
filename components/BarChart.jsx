@@ -32,6 +32,10 @@ class BarChart extends Component {
   };
 
   loadChart = (container) => {
+    if (container == null) {
+      return;
+    }
+    
     const chart = dc.barChart(container);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('elasticY', 'centerBar', 'gap', 'round',

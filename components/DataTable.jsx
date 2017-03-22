@@ -8,6 +8,10 @@ class DataTable extends Component {
   };
 
   loadChart = (container) => {
+    if (container == null) {
+      return;
+    }
+    
     const chart = dc.dataTable(container);
     const helper = this.props.chartHelper(this, chart, false);
     helper.setContextProperties('dimension')

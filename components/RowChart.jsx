@@ -15,6 +15,10 @@ class RowChart extends Component {
   };
 
   loadChart = (container) => {
+    if (container == null) {
+      return;
+    }
+    
     const chart = dc.rowChart(container);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('elasticX', 'x', 'ordinalColors', 'onRenderlet', 
