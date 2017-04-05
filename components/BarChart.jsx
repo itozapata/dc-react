@@ -19,6 +19,7 @@ class BarChart extends Component {
     onRenderlet: PropTypes.func,
     brushOn: PropTypes.bool,
     clipPadding: PropTypes.number,
+    valueAccessor: PropTypes.func,
     children: function (props, propName, componentName) {
       const prop = props[propName];
       let error = null;
@@ -42,7 +43,7 @@ class BarChart extends Component {
                          'alwaysUseRounding', 'x', 'y', 'xUnits', 
                          'renderHorizontalGridLines', 'filterPrinter', 
                          'ordinalColors', 'onRenderlet', 'brushOn',
-                         'clipPadding');
+                         'clipPadding', 'valueAccessor');
 
     React.Children.forEach(this.props.children, function (child) {
       if (child.type === XAxisLabel) {
