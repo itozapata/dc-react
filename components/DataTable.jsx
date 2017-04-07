@@ -22,7 +22,7 @@ class DataTable extends Component {
 
   render() {
     return (
-      <div className={this.props.className} ref={this.loadChart} />
+      <div className={this.props.className} ref={this.loadChart} id={this.props.id} />
     );
   }
 }

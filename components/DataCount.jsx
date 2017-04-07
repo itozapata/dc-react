@@ -12,7 +12,7 @@ class DataCount extends Component {
 
   render() {
     return (
-      <div className={this.props.className} ref={this.loadChart}>
+      <div className={this.props.className} ref={this.loadChart} id={this.props.id}>
         <span className='filter-count' /> / <span className='total-count' />
       </div>
     );

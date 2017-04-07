@@ -3,6 +3,7 @@ import { ChartPropertyHelper } from './helpers';
 
 export let Base = DCComponent => class extends Component {
   static propTypes = {
+    id: PropTypes.string,
     dimension: PropTypes.func.isRequired,
     group: PropTypes.func.isRequired,
     width: PropTypes.number,
