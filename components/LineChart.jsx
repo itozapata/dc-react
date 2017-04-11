@@ -37,7 +37,7 @@ class LineChart extends Component {
       return;
     }
 
-    const chart = dc.lineChart(container);
+    const chart = dc.lineChart(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('renderArea', 'xAxis', 'x', 'round', 'xUnits',
                          'elasticY', 'renderHorizontalGridLines', 'brushOn',

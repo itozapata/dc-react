@@ -37,7 +37,7 @@ class BarChart extends Component {
       return;
     }
     
-    const chart = dc.barChart(container);
+    const chart = dc.barChart(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('elasticY', 'centerBar', 'gap', 'round',
                          'alwaysUseRounding', 'x', 'y', 'xUnits', 

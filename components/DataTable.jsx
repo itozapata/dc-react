@@ -12,7 +12,7 @@ class DataTable extends Component {
       return;
     }
     
-    const chart = dc.dataTable(container);
+    const chart = dc.dataTable(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart, false);
     helper.setContextProperties('dimension')
           .setProperties('columns', 'group');

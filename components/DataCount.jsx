@@ -4,7 +4,7 @@ import { Base } from './Base';
 
 class DataCount extends Component {
   loadChart = (container) => {
-    const chart = dc.dataCount(container);
+    const chart = dc.dataCount(container, this.props.chartGroup);
     this.props.chartHelper(this, chart);
 
     chart.render();

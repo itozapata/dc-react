@@ -27,7 +27,7 @@ class GeoChoroplethChart extends Component {
       return;
     }
     
-    const chart = dc.geoChoroplethChart(container);
+    const chart = dc.geoChoroplethChart(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('projection', 'colors', 'colorDomain',
                          'valueAccessor', 'onPreRedraw');

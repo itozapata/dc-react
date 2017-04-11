@@ -25,7 +25,7 @@ class PieChart extends Component {
       return;
     }
     
-    const chart = dc.pieChart(container);
+    const chart = dc.pieChart(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('radius', 'innerRadius', 'ordinalColors', 
                          'onPretransition', 'legend', 'onRenderlet',

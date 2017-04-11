@@ -16,7 +16,8 @@ export let Base = DCComponent => class extends Component {
     legend: PropTypes.object,
     setChart: PropTypes.func,
     renderLabel: PropTypes.bool,
-    renderTitle: PropTypes.bool
+    renderTitle: PropTypes.bool,
+    chartGroup: PropTypes.string
   };
 
   static contextTypes = {

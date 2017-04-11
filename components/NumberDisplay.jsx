@@ -15,7 +15,7 @@ class NumberDisplay extends Component {
       return;
     }
     
-    const chart = dc.numberDisplay(container);
+    const chart = dc.numberDisplay(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('valueAccessor', 'formatNumber', 'onPretransition',
                          'html');

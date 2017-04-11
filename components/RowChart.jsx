@@ -19,7 +19,7 @@ class RowChart extends Component {
       return;
     }
     
-    const chart = dc.rowChart(container);
+    const chart = dc.rowChart(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('elasticX', 'x', 'ordinalColors', 'onRenderlet', 
                          'onPretransition', 'colors', 'colorAccessor');

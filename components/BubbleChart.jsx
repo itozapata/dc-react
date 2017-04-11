@@ -19,7 +19,7 @@ class BubbleChart extends Component {
       return;
     }
     
-    const chart = dc.bubbleChart(container);
+    const chart = dc.bubbleChart(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('colorAccessor', 'keyAccessor',
                          'valueAccessor', 'radiusValueAccessor', 'x', 'y', 'r',
