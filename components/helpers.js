@@ -116,6 +116,8 @@ class ChartPropertyHelper {
     chart.select('svg')
       .call(zoom)
       .call(zoom.event);
+
+    return zoom;
   }
 
   setColorLegend(width, height, colors, minValue, maxValue, labelY, legendY, size, labelValueFormat, locale) {

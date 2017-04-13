@@ -10,6 +10,7 @@ class GeoChoroplethChart extends Component {
     colorDomain: PropTypes.array.isRequired,
     valueAccessor: PropTypes.func,
     onPreRedraw: PropTypes.func,
+    onRenderlet: PropTypes.func,
     children: function (props, propName, componentName) {
       const prop = props[propName];
       let error = null;
@@ -30,7 +31,7 @@ class GeoChoroplethChart extends Component {
     const chart = dc.geoChoroplethChart(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('projection', 'colors', 'colorDomain',
-                         'valueAccessor', 'onPreRedraw');
+                         'valueAccessor', 'onPreRedraw', 'onRenderlet');
 
     React.Children.forEach(this.props.children, function (child) {
       if (child.type === OverlayGeoJson) {
@@ -42,7 +43,7 @@ class GeoChoroplethChart extends Component {
 
     React.Children.forEach(this.props.children, function (child) {
       if (child.type === Zoom) {
-        helper.setZoom(child.props.width, child.props.height, child.props.scale, child.props.projection);
+        chart._zoom = helper.setZoom(child.props.width, child.props.height, child.props.scale, child.props.projection);
       }
       if (child.type === ColorLegend) {
         helper.setColorLegend(child.props.width, child.props.height, child.props.colors, child.props.minValue, child.props.maxValue, child.props.labelY, child.props.legendY, child.props.size, child.props.labelValueFormat, child.props.locale);
