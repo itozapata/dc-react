@@ -17,7 +17,9 @@ export let Base = DCComponent => class extends Component {
     setChart: PropTypes.func,
     renderLabel: PropTypes.bool,
     renderTitle: PropTypes.bool,
-    chartGroup: PropTypes.string
+    chartGroup: PropTypes.string,
+    filterHandler: PropTypes.func,
+    onClick: PropTypes.func
   };
 
   static contextTypes = {
@@ -29,7 +31,8 @@ export let Base = DCComponent => class extends Component {
     if (loadDefault) {
       helper.setProperties('width', 'height', 'title', 'label',
                            'transitionDuration', 'margins', 'mouseZoomable',
-                           'legend', 'renderLabel', 'renderTitle')
+                           'legend', 'renderLabel', 'renderTitle',
+                           'filterHandler', 'onClick')
             .setContextProperties('dimension', 'group');
     }
     if (dcComponent.props.setChart) {

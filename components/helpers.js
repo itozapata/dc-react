@@ -23,7 +23,7 @@ class ChartPropertyHelper {
   }
 
   setProperty(key) {
-    if (key.match(/^on/)) {
+    if (key.match(/^on(?!.*Click)/)) {
       return this.setOn(key);
     }
 
@@ -36,7 +36,11 @@ class ChartPropertyHelper {
     }
 
     if (this.props.hasOwnProperty(key)) {
-      this.chart[key](this.props[key]);
+      if (key.match(/^on/)) {
+        this.chart[key] = this.props[key];
+      } else {
+        this.chart[key](this.props[key]);
+      }
     }
     return this;
   }
