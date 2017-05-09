@@ -3,18 +3,26 @@ import dc from 'dc';
 import { Base } from './Base';
 
 class DataCount extends Component {
+  static PropTypes = {
+    formatNumber: PropTypes.func,
+    html: PropTypes.object
+  };
+
   loadChart = (container) => {
+    if (container == null) {
+      return;
+    }
+    
     const chart = dc.dataCount(container, this.props.chartGroup);
-    this.props.chartHelper(this, chart);
+    const helper = this.props.chartHelper(this, chart);
+    helper.setProperties('formatNumber', 'html');
 
     chart.render();
   };
 
   render() {
     return (
-      <div className={this.props.className} ref={this.loadChart} id={this.props.id}>
-        <span className='filter-count' /> / <span className='total-count' />
-      </div>
+      <div className={this.props.className} ref={this.loadChart} id={this.props.id} id={this.props.id} />
     );
   }
 }
