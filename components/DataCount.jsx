@@ -5,7 +5,8 @@ import { Base } from './Base';
 class DataCount extends Component {
   static PropTypes = {
     formatNumber: PropTypes.func,
-    html: PropTypes.object
+    html: PropTypes.object,
+    onRenderlet: PropTypes.func,
   };
 
   loadChart = (container) => {
@@ -15,7 +16,7 @@ class DataCount extends Component {
     
     const chart = dc.dataCount(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
-    helper.setProperties('formatNumber', 'html');
+    helper.setProperties('formatNumber', 'html', 'onRenderlet');
 
     chart.render();
   };
