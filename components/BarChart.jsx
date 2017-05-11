@@ -21,6 +21,7 @@ class BarChart extends Component {
     clipPadding: PropTypes.number,
     valueAccessor: PropTypes.func,
     keyAccessor: PropTypes.func,
+    onFiltered: PropTypes.func,
     children: function (props, propName, componentName) {
       const prop = props[propName];
       let error = null;
@@ -44,7 +45,8 @@ class BarChart extends Component {
                          'alwaysUseRounding', 'x', 'y', 'xUnits', 
                          'renderHorizontalGridLines', 'filterPrinter', 
                          'ordinalColors', 'onRenderlet', 'brushOn',
-                         'clipPadding', 'valueAccessor', 'keyAccessor');
+                         'clipPadding', 'valueAccessor', 'keyAccessor',
+                         'onFiltered');
 
     React.Children.forEach(this.props.children, function (child) {
       if (child.type === XAxisLabel) {

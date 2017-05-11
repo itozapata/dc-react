@@ -12,7 +12,8 @@ class RowChart extends Component {
     onPretransition: PropTypes.func,
     colors: PropTypes.func,
     colorAccessor: PropTypes.func,
-    wrapLabelWidth: PropTypes.number
+    wrapLabelWidth: PropTypes.number,
+    onFiltered: PropTypes.func
   };
 
   loadChart = (container) => {
@@ -24,7 +25,7 @@ class RowChart extends Component {
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('elasticX', 'x', 'ordinalColors', 'onRenderlet', 
                          'onPretransition', 'colors', 'colorAccessor',
-                         'wrapLabelWidth');
+                         'wrapLabelWidth', 'onFiltered');
 
     if (this.props.xAxis) {
       this.props.xAxis(chart.xAxis());

@@ -11,6 +11,7 @@ class GeoChoroplethChart extends Component {
     valueAccessor: PropTypes.func,
     onPreRedraw: PropTypes.func,
     onRenderlet: PropTypes.func,
+    onFiltered: PropTypes.func,
     children: function (props, propName, componentName) {
       const prop = props[propName];
       let error = null;
@@ -31,7 +32,8 @@ class GeoChoroplethChart extends Component {
     const chart = dc.geoChoroplethChart(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
     helper.setProperties('projection', 'colors', 'colorDomain',
-                         'valueAccessor', 'onPreRedraw', 'onRenderlet');
+                         'valueAccessor', 'onPreRedraw', 'onRenderlet',
+                         'onFiltered');
 
     React.Children.forEach(this.props.children, function (child) {
       if (child.type === OverlayGeoJson) {

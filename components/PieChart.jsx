@@ -17,7 +17,8 @@ class PieChart extends Component {
     valueAccessor: PropTypes.func,
     keyAccessor: PropTypes.func,
     colors: PropTypes.func,
-    colorAccessor: PropTypes.func
+    colorAccessor: PropTypes.func,
+    onFiltered: PropTypes.func
   };
 
   loadChart = (container) => {
@@ -31,7 +32,7 @@ class PieChart extends Component {
                          'onPretransition', 'legend', 'onRenderlet',
                          'externalRadiusPadding', 'cx', 'cy',
                          'valueAccessor', 'keyAccessor', 'colors',
-                         'colorAccessor');
+                         'colorAccessor', 'onFiltered');
 
     chart.render();
   };
