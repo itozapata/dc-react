@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ChartPropertyHelper } from './helpers';
 
 export let Base = DCComponent => class extends Component {

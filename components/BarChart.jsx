@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import dc from 'dc';
 import { Base } from './Base';
 import { XAxisLabel, YAxisLabel, XAxis, YAxis } from './index';
