@@ -21,6 +21,7 @@ class LineChart extends Component {
     onRenderlet: PropTypes.func,
     onPretransition: PropTypes.func,
     onFiltered: PropTypes.func,
+    defined: PropTypes.func,
     children: function (props, propName, componentName) {
       const prop = props[propName];
       let error = null;
@@ -43,7 +44,8 @@ class LineChart extends Component {
     helper.setProperties('renderArea', 'xAxis', 'x', 'round', 'xUnits',
                          'elasticY', 'renderHorizontalGridLines', 'brushOn',
                          'valueAccessor', 'renderVerticalGridLines', 'colors',
-                         'onPretransition', 'onRenderlet', 'onFiltered')
+                         'onPretransition', 'onRenderlet', 'onFiltered',
+                         'defined')
           .setContextProperties('stack');
 
     React.Children.forEach(this.props.children, function (child) {
