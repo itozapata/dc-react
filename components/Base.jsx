@@ -5,8 +5,8 @@ import { ChartPropertyHelper } from './helpers';
 export let Base = DCComponent => class extends Component {
   static propTypes = {
     id: PropTypes.string,
-    dimension: PropTypes.func.isRequired,
-    group: PropTypes.func.isRequired,
+    dimension: PropTypes.oneOfType([PropTypes.func.isRequired, PropTypes.object.isRequired]),
+    group: PropTypes.oneOfType([PropTypes.func.isRequired, PropTypes.object.isRequired]),
     width: PropTypes.number,
     height: PropTypes.number,
     title: PropTypes.func,
@@ -20,7 +20,8 @@ export let Base = DCComponent => class extends Component {
     renderTitle: PropTypes.bool,
     chartGroup: PropTypes.string,
     filterHandler: PropTypes.func,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    serverSide: PropTypes.bool
   };
 
   static contextTypes = {
@@ -33,8 +34,12 @@ export let Base = DCComponent => class extends Component {
       helper.setProperties('width', 'height', 'title', 'label',
                            'transitionDuration', 'margins', 'mouseZoomable',
                            'legend', 'renderLabel', 'renderTitle',
-                           'filterHandler', 'onClick')
-            .setContextProperties('dimension', 'group');
+                           'filterHandler', 'onClick');
+      if (dcComponent.props.serverSide) {
+        helper.setProperties('dimension', 'group');
+      } else {
+        helper.setContextProperties('dimension', 'group');
+      }
     }
     if (dcComponent.props.setChart) {
       dcComponent.props.setChart(dcChart);
