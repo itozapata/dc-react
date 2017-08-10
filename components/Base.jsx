@@ -25,7 +25,7 @@ export let Base = DCComponent => class extends Component {
   };
 
   static contextTypes = {
-    crossfilterContext: PropTypes.object.isRequired
+    crossfilterContext: PropTypes.object
   };
 
   dcHelper = (dcComponent, dcChart, loadDefault = true) => {
