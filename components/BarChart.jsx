@@ -7,7 +7,9 @@ import { XAxisLabel, YAxisLabel, XAxis, YAxis } from './index';
 class BarChart extends Component {
   static propTypes = {
     elasticY: PropTypes.bool,
+    elasticX: PropTypes.bool,
     centerBar: PropTypes.bool,
+    barPadding: PropTypes.number,
     gap: PropTypes.number,
     round: PropTypes.func,
     alwaysUseRounding: PropTypes.bool,
@@ -42,12 +44,12 @@ class BarChart extends Component {
     
     const chart = dc.barChart(container, this.props.chartGroup);
     const helper = this.props.chartHelper(this, chart);
-    helper.setProperties('elasticY', 'centerBar', 'gap', 'round',
+    helper.setProperties('elasticY', 'elasticX', 'centerBar', 'gap', 'round',
                          'alwaysUseRounding', 'x', 'y', 'xUnits', 
                          'renderHorizontalGridLines', 'filterPrinter', 
                          'ordinalColors', 'onRenderlet', 'brushOn',
                          'clipPadding', 'valueAccessor', 'keyAccessor',
-                         'onFiltered');
+                         'onFiltered', 'barPadding');
 
     React.Children.forEach(this.props.children, function (child) {
       if (child.type === XAxisLabel) {

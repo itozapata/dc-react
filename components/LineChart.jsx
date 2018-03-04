@@ -13,6 +13,7 @@ class LineChart extends Component {
     xUnits: PropTypes.func,
     elasticY: PropTypes.bool,
     renderHorizontalGridLines: PropTypes.bool,
+    renderDataPoints: PropTypes.object,
     brushOn: PropTypes.bool,
     valueAccessor: PropTypes.func,
     stack: PropTypes.func,
@@ -45,7 +46,7 @@ class LineChart extends Component {
                          'elasticY', 'renderHorizontalGridLines', 'brushOn',
                          'valueAccessor', 'renderVerticalGridLines', 'colors',
                          'onPretransition', 'onRenderlet', 'onFiltered',
-                         'defined')
+                         'defined', 'renderDataPoints')
           .setContextProperties('stack');
 
     React.Children.forEach(this.props.children, function (child) {
